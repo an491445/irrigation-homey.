@@ -1,0 +1,8 @@
+{
+  "name": "com.athom.irrigation",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {
+    "homey": "^2.1.5"
+  }
+}
