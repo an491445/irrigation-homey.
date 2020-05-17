@@ -14,11 +14,22 @@ class RaspberryPiDevice extends Homey.Device {
 		const client = mqtt.connect(`mqtt://${host}:${port}`);
 		this.client = client;
 
-		// incoming data...
+		// Save data
 		client.on('message', (topic, message) => {
-			this.log('Got new message');
-			this.log(topic);
-			this.log(message.toString());
+			if (topic === 'AM2320') {
+				this.log('Got new value from AM2320');
+				Promise.resolve(JSON.parse(message.toString()))
+					.then(data => data.temperature)
+					.then(temperature => {
+						if (temperature) {
+							return this.setCapabilityValue('measure_temperature.AM2320', temperature);
+						} else {
+							this.log("Could not parse value");
+						}
+					})
+					// Something went wrong, for example message not JSON
+					.catch(err => this.log(err));
+			}
 		});
 
 		client.on('connect', () => {
