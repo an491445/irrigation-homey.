@@ -20,5 +20,21 @@
   },
   "author": {
     "name": "Anu Lind"
-  }
+  },
+  "drivers": [
+    {
+      "id": "raspberry-pi",
+      "name": {
+        "en": "Raspberry pi"
+      },
+      "class": "other",
+      "images": {
+        "large": "/drivers/raspberry-pi/assets/images/large.png",
+        "small": "/drivers/raspberry-pi/assets/images/small.png"
+      },
+      "capabilities": [
+        "onoff"
+      ]
+    }
+  ]
 }
