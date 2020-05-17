@@ -34,6 +34,11 @@
       },
       "capabilities": [
         "onoff"
+      ],
+      "pair": [
+        {
+          "id": "mqtt_setup"
+        }
       ]
     }
   ]

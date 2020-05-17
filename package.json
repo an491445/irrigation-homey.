@@ -4,5 +4,8 @@
   "main": "app.js",
   "devDependencies": {
     "homey": "^2.1.5"
+  },
+  "dependencies": {
+    "mqtt": "^4.0.0"
   }
 }

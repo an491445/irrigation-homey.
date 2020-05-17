@@ -8,5 +8,10 @@
     "large": "/drivers/raspberry-pi/assets/images/large.png",
     "small": "/drivers/raspberry-pi/assets/images/small.png"
   },
-  "capabilities": ["onoff"]
+  "capabilities": ["onoff"],
+  "pair": [
+    {
+      "id": "mqtt_setup"
+    }
+  ]
 }

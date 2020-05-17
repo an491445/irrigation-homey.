@@ -1,0 +1,40 @@
+<script type="text/javascript">
+  Homey.setTitle("Pair Raspberry Pi");
+
+  function connect() {
+    let host = document.getElementById('host').value;
+    let port = document.getElementById('port').value;
+    if (!host || !port) {
+      return Homey.alert('Please fill in all fields');
+    }
+    Homey.showLoadingOverlay();
+
+    // Register devices
+    Homey.createDevice({
+      data: {
+        id: "pi-sensors",
+      },
+      name: "Pi sensors",
+      capabilities: [
+        "measure_temperature.AM2320",
+        "measure_temperature.BMP280"
+      ],
+      settings: { host, port },
+    }, err => {
+      Homey.hideLoadingOverlay();
+      if (err) {
+        Homey.alert(err);
+      } else {
+        Homey.done();
+      }
+    });
+  }
+</script>
+
+<form>
+  <label for="host">MQTT host</label>
+  <input type="text" id="host" name="host" /><br />
+  <label for="port">MQTT Port</label>
+  <input type="text" id="port" name="port" /><br /><br />
+  <button type="button" onclick="connect()">Connect</button>
+</form>
