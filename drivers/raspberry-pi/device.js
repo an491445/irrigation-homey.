@@ -11,39 +11,53 @@ class RaspberryPiDevice extends Homey.Device {
 		this.log('Connecting to MQTT...');
 		const { host, port } = this.getSettings();
 
-		const client = mqtt.connect(`mqtt://${host}:${port}`);
-		this.client = client;
+		this.client = mqtt.connect(`mqtt://${host}:${port}`);
 
-		// Save data
-		client.on('message', (topic, message) => {
-			if (topic === 'AM2320') {
-				this.log('Got new value from AM2320');
-				Promise.resolve(JSON.parse(message.toString()))
-					.then(data => data.temperature)
-					.then(temperature => {
-						if (temperature) {
-							return this.setCapabilityValue('measure_temperature.AM2320', temperature);
-						} else {
-							this.log("Could not parse value");
-						}
-					})
-					// Something went wrong, for example message not JSON
-					.catch(err => this.log(err));
-			}
-		});
+		// Process incomming messages
+		this.client.on('message', (topic, message) => this.handleMessage(topic, message));
 
-		client.on('connect', () => {
+		this.client.on('connect', () => {
 			this.log('MQTT connection established');
-			client.subscribe('AM2320', err => {
+			const topics = ['AM2320', 'BMP280', 'HCSR04', 'TSL2561'];
+			this.client.subscribe(topics, err => {
 				if (err) {
 					this.log(err);
-					client.end();
+					this.client.end();
 					this.setWarning('MQTT failure, device not receiving data');
 				} else {
-					this.log('Subscribed to AM2320');
+					this.log(`Subscribed to ${topics}`);
 				}
 			});
 		});
+	}
+
+	handleMessage(topic, message) {
+		this.log(`Got new message on topic ${topic}`);
+		try {
+			const msg = message.toString();
+			this.log(msg);
+			const data = JSON.parse(msg);
+
+			switch (topic) {
+				case 'AM2320':
+					this.setCapabilityValue('measure_humidity.AM2320', data.humidity);
+					this.setCapabilityValue('measure_temperature.AM2320', data.temperature);
+					break;
+				case 'BMP280':
+					this.setCapabilityValue('measure_pressure.BMP280', data.pressure);
+					this.setCapabilityValue('measure_temperature.BMP280', data.temperature);
+					break;
+				case 'HCSR04':
+					this.setCapabilityValue('meter_water.HCSR04', data.range);
+					break;
+				case 'TSL2561':
+					this.setCapabilityValue('measure_luminance.TSL2561', data.light);
+					break;
+			}
+		} catch (err) {
+			// Something went wrong, for example message not JSON
+			this.log(err);
+		}
 	}
 
 	onDeleted() {
