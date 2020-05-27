@@ -18,7 +18,7 @@ class RaspberryPiDevice extends Homey.Device {
 
 		this.client.on('connect', () => {
 			this.log('MQTT connection established');
-			const topics = ['AM2320', 'BMP280', 'HCSR04', 'TSL2561'];
+			const topics = ['pi/+/data/+'];
 			this.client.subscribe(topics, err => {
 				if (err) {
 					this.log(err);
@@ -36,22 +36,26 @@ class RaspberryPiDevice extends Homey.Device {
 		try {
 			const msg = message.toString();
 			this.log(msg);
-			const data = JSON.parse(msg);
+			const { data } = JSON.parse(msg);
 
 			switch (topic) {
-				case 'AM2320':
-					this.setCapabilityValue('measure_humidity.AM2320', data.humidity);
-					this.setCapabilityValue('measure_temperature.AM2320', data.temperature);
+				case 'pi/AM2320/data/humidity':
+					this.setCapabilityValue('measure_humidity.AM2320', data);
 					break;
-				case 'BMP280':
-					this.setCapabilityValue('measure_pressure.BMP280', data.pressure);
-					this.setCapabilityValue('measure_temperature.BMP280', data.temperature);
+				case 'pi/AM2320/data/temperature':
+					this.setCapabilityValue('measure_temperature.AM2320', data);
 					break;
-				case 'HCSR04':
-					this.setCapabilityValue('meter_water.HCSR04', data.range);
+				case 'pi/BMP280/data/pressure':
+					this.setCapabilityValue('measure_pressure.BMP280', data);
 					break;
-				case 'TSL2561':
-					this.setCapabilityValue('measure_luminance.TSL2561', data.light);
+				case 'pi/BMP280/data/temperature':
+					this.setCapabilityValue('measure_temperature.BMP280', data);
+					break;
+				case 'pi/HCSR04/data/range':
+					this.setCapabilityValue('meter_water.HCSR04', data);
+					break;
+				case 'pi/TSL2561/data/light':
+					this.setCapabilityValue('measure_luminance.TSL2561', data);
 					break;
 			}
 		} catch (err) {
