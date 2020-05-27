@@ -39,22 +39,22 @@ class RaspberryPiDevice extends Homey.Device {
 			const { data } = JSON.parse(msg);
 
 			switch (topic) {
-				case 'pi/AM2320/data/humidity':
+				case 'pi/sensors/AM2320/humidity':
 					this.setCapabilityValue('measure_humidity.AM2320', data);
 					break;
-				case 'pi/AM2320/data/temperature':
+				case 'pi/sensors/AM2320/temperature':
 					this.setCapabilityValue('measure_temperature.AM2320', data);
 					break;
-				case 'pi/BMP280/data/pressure':
+				case 'pi/sensors/BMP280/pressure':
 					this.setCapabilityValue('measure_pressure.BMP280', data);
 					break;
-				case 'pi/BMP280/data/temperature':
+				case 'pi/sensors/BMP280/temperature':
 					this.setCapabilityValue('measure_temperature.BMP280', data);
 					break;
-				case 'pi/HCSR04/data/range':
+				case 'pi/sensors/HCSR04/range':
 					this.setCapabilityValue('meter_water.HCSR04', data);
 					break;
-				case 'pi/TSL2561/data/light':
+				case 'pi/sensors/TSL2561/light':
 					this.setCapabilityValue('measure_luminance.TSL2561', data);
 					break;
 			}
