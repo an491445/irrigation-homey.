@@ -18,7 +18,7 @@ class RaspberryPiDevice extends Homey.Device {
 
 		this.client.on('connect', () => {
 			this.log('MQTT connection established');
-			const topics = ['pi/+/data/+'];
+			const topics = ['pi/sensors/#'];
 			this.client.subscribe(topics, err => {
 				if (err) {
 					this.log(err);
