@@ -33,13 +33,115 @@
         "small": "/drivers/raspberry-pi/assets/images/small.png"
       },
       "capabilities": [
-        "onoff"
+        "measure_humidity.AM2320",
+        "measure_temperature.AM2320",
+        "measure_pressure.BMP280",
+        "measure_temperature.BMP280",
+        "measure_luminance.TSL2561",
+        "measure_soil_moisture.soil_moisture_1",
+        "measure_soil_moisture.soil_moisture_2",
+        "measure_soil_moisture.soil_moisture_3",
+        "meter_water.HCSR04",
+        "button.refresh_soil_moisture",
+        "onoff.pump1",
+        "onoff.pump2",
+        "onoff.pump3",
+        "onoff.pump4",
+        "onoff.pow1"
       ],
+      "capabilitiesOptions": {
+        "measure_humidity.AM2320": {
+          "title": {
+            "en": "Humidity (AM2320)"
+          }
+        },
+        "measure_temperature.AM2320": {
+          "title": {
+            "en": "Temperature (AM2320)"
+          }
+        },
+        "measure_pressure.BMP280": {
+          "title": {
+            "en": "Pressure (BMP280)"
+          }
+        },
+        "measure_temperature.BMP280": {
+          "title": {
+            "en": "Temperature (BMP280)"
+          }
+        },
+        "measure_luminance.TSL2561": {
+          "title": {
+            "en": "Luminance (TSL2561)"
+          }
+        },
+        "measure_soil_moisture.soil_moisture_1": {
+          "title": {
+            "en": "Soil moisture 1"
+          }
+        },
+        "measure_soil_moisture.soil_moisture_2": {
+          "title": {
+            "en": "Soil moisture 2"
+          }
+        },
+        "measure_soil_moisture.soil_moisture_3": {
+          "title": {
+            "en": "Soil moisture 3"
+          }
+        },
+        "meter_water.HCSR04": {
+          "title": {
+            "en": "Water level (HCSR04)"
+          }
+        },
+        "button.refresh_soil_moisture": {
+          "title": {
+            "en": "Get new readings"
+          }
+        },
+        "onoff.pump1": {
+          "title": {
+            "en": "Pump 1"
+          }
+        },
+        "onoff.pump2": {
+          "title": {
+            "en": "Pump 2"
+          }
+        },
+        "onoff.pump3": {
+          "title": {
+            "en": "Pump 3"
+          }
+        },
+        "onoff.pump4": {
+          "title": {
+            "en": "Pump 4"
+          }
+        },
+        "onoff.pow1": {
+          "title": {
+            "en": "pow1"
+          }
+        }
+      },
       "pair": [
         {
           "id": "mqtt_setup"
         }
       ]
     }
-  ]
+  ],
+  "capabilities": {
+    "measure_soil_moisture": {
+      "type": "number",
+      "title": {
+        "en": "Soil moisture"
+      },
+      "uiComponent": "sensor",
+      "getable": true,
+      "setable": false
+    }
+  }
 }

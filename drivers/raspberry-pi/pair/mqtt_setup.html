@@ -12,37 +12,9 @@
     // Register devices
     Homey.createDevice({
       data: {
-        id: "pi-sensors",
+        id: "raspberry-pi",
       },
-      name: "Pi sensors",
-      capabilities: [
-        "measure_humidity.AM2320",
-        "measure_temperature.AM2320",
-        "measure_pressure.BMP280",
-        "measure_temperature.BMP280",
-        "meter_water.HCSR04",
-        "measure_luminance.TSL2561",
-      ],
-      capabilitiesOptions: {
-        "measure_humidity.AM2320": {
-          title: { en: "Humidity (AM2320)" }
-        },
-        "measure_temperature.AM2320": {
-          title: { en: "Temperature (AM2320)" }
-        },
-        "measure_pressure.BMP280": {
-          title: { en: "Pressure (BMP280)" }
-        },
-        "measure_temperature.BMP280": {
-          title: { en: "Temperature (BMP280)" }
-        },
-        "meter_water.HCSR04": {
-          title: { en: "Water level (HCSR04)" }
-        },
-        "measure_luminance.TSL2561": {
-          title: { en: "Luminance (TSL2561)" }
-        },
-      },
+      name: "Raspberry Pi",
       settings: { host, port },
     }, err => {
       Homey.hideLoadingOverlay();

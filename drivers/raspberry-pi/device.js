@@ -13,7 +13,7 @@ class RaspberryPiDevice extends Homey.Device {
 
 		this.client = mqtt.connect(`mqtt://${host}:${port}`);
 
-		// Process incomming messages
+		// Process incoming messages
 		this.client.on('message', (topic, message) => this.handleMessage(topic, message));
 
 		this.client.on('connect', () => {
@@ -28,6 +28,26 @@ class RaspberryPiDevice extends Homey.Device {
 					this.log(`Subscribed to ${topics}`);
 				}
 			});
+		});
+
+		const pumpCapabilities = ["onoff.pump1", "onoff.pump2", "onoff.pump3", "onoff.pump4"]
+		this.registerMultipleCapabilityListener(pumpCapabilities, valueObj => {
+			const capability = Object.keys(valueObj)[0];
+			const pin = capability.split('.')[1];
+			const requestId = `homey-${Date.now()}-${Math.floor(Math.random() * 100_000)}`;
+			const message = {
+				action: "run",
+				payload: {
+					device: "MCP23017",
+					pin,
+					duration: 5,
+				},
+				requestId,
+			}
+			this.setCapabilityValue(capability, true);
+			this.client.publish("pi/requests", JSON.stringify(message));
+			setTimeout(() => this.setCapabilityValue(capability, false), 5000);
+			return Promise.resolve();
 		});
 	}
 

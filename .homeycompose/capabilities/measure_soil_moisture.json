@@ -1,0 +1,9 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Soil moisture"
+  },
+  "uiComponent": "sensor",
+  "getable": true,
+  "setable": false
+}
