@@ -37,17 +37,19 @@
         "measure_temperature.AM2320",
         "measure_pressure.BMP280",
         "measure_temperature.BMP280",
+        "measure_temperature.analog",
         "measure_luminance.TSL2561",
         "measure_soil_moisture.soil_moisture_1",
         "measure_soil_moisture.soil_moisture_2",
         "measure_soil_moisture.soil_moisture_3",
+        "measure_soil_moisture.soil_moisture_4",
         "meter_water.HCSR04",
-        "button.refresh_soil_moisture",
+        "button.refresh_readings",
+        "button.cancel",
         "onoff.pump1",
         "onoff.pump2",
         "onoff.pump3",
-        "onoff.pump4",
-        "onoff.pow1"
+        "onoff.pump4"
       ],
       "capabilitiesOptions": {
         "measure_humidity.AM2320": {
@@ -70,6 +72,11 @@
             "en": "Temperature (BMP280)"
           }
         },
+        "measure_temperature.analog": {
+          "title": {
+            "en": "Temperature (analog)"
+          }
+        },
         "measure_luminance.TSL2561": {
           "title": {
             "en": "Luminance (TSL2561)"
@@ -90,14 +97,24 @@
             "en": "Soil moisture 3"
           }
         },
+        "measure_soil_moisture.soil_moisture_4": {
+          "title": {
+            "en": "Soil moisture 4"
+          }
+        },
         "meter_water.HCSR04": {
           "title": {
             "en": "Water level (HCSR04)"
           }
         },
-        "button.refresh_soil_moisture": {
+        "button.refresh_readings": {
           "title": {
             "en": "Get new readings"
+          }
+        },
+        "button.cancel": {
+          "title": {
+            "en": "Cancel jobs"
           }
         },
         "onoff.pump1": {
@@ -118,11 +135,6 @@
         "onoff.pump4": {
           "title": {
             "en": "Pump 4"
-          }
-        },
-        "onoff.pow1": {
-          "title": {
-            "en": "pow1"
           }
         }
       },
