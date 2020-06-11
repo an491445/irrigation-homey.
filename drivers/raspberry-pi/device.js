@@ -34,13 +34,15 @@ class RaspberryPiDevice extends Homey.Device {
 		this.registerMultipleCapabilityListener(pumpCapabilities, valueObj => {
 			const capability = Object.keys(valueObj)[0];
 			const pin = capability.split('.')[1];
+			const settings = this.getSettings();
+			const duration = settings[`duration-${pin}`];
 			const requestId = this.generateRequestId();
 			const message = {
 				action: "run",
 				payload: {
 					device: "MCP23017",
 					pin,
-					duration: 5,
+					duration,
 				},
 				requestId,
 			}

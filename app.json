@@ -142,6 +142,68 @@
         {
           "id": "mqtt_setup"
         }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Pump settings"
+          },
+          "children": [
+            {
+              "id": "duration-pump1",
+              "type": "number",
+              "label": {
+                "en": "Duration Pump 1"
+              },
+              "value": 10,
+              "min": 0,
+              "max": 60,
+              "units": {
+                "en": "seconds"
+              }
+            },
+            {
+              "id": "duration-pump2",
+              "type": "number",
+              "label": {
+                "en": "Duration Pump 2"
+              },
+              "value": 10,
+              "min": 0,
+              "max": 60,
+              "units": {
+                "en": "seconds"
+              }
+            },
+            {
+              "id": "duration-pump3",
+              "type": "number",
+              "label": {
+                "en": "Duration Pump 3"
+              },
+              "value": 10,
+              "min": 0,
+              "max": 60,
+              "units": {
+                "en": "seconds"
+              }
+            },
+            {
+              "id": "duration-pump4",
+              "type": "number",
+              "label": {
+                "en": "Duration Pump 4"
+              },
+              "value": 10,
+              "min": 0,
+              "max": 60,
+              "units": {
+                "en": "seconds"
+              }
+            }
+          ]
+        }
       ]
     }
   ],
