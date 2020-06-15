@@ -20,6 +20,7 @@
     "measure_soil_moisture.soil_moisture_3",
     "measure_soil_moisture.soil_moisture_4",
     "meter_water.HCSR04",
+    "alarm_water.watertank_empty",
     "button.refresh_readings",
     "button.cancel",
     "onoff.pump1",
@@ -60,6 +61,9 @@
     },
     "meter_water.HCSR04": {
       "title": { "en": "Water level (HCSR04)" }
+    },
+    "alarm_water.watertank_empty": {
+      "title": { "en": "Watertank empty" }
     },
     "button.refresh_readings": {
       "title": { "en": "Get new readings" }

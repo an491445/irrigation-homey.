@@ -87,6 +87,8 @@ class RaspberryPiDevice extends Homey.Device {
 						return this.setCapabilityValue('measure_temperature.analog', msg.data);
 					case 'pi/sensors/HCSR04/range':
 						return this.setCapabilityValue('meter_water.HCSR04', msg.data);
+					case 'pi/sensors/MCP23017/watertank_empty':
+						return this.setCapabilityValue('alarm_water.watertank_empty', msg.data === 1);
 					case 'pi/sensors/TSL2561/light':
 						return this.setCapabilityValue('measure_luminance.TSL2561', msg.data);
 					case 'pi/sensors/MCP3008/soil_moisture_1':
