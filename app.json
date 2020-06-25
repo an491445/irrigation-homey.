@@ -44,12 +44,16 @@
         "measure_soil_moisture.soil_moisture_3",
         "measure_soil_moisture.soil_moisture_4",
         "meter_water.HCSR04",
+        "alarm_water.watertank_empty",
         "button.refresh_readings",
         "button.cancel",
         "onoff.pump1",
         "onoff.pump2",
         "onoff.pump3",
-        "onoff.pump4"
+        "onoff.pump4",
+        "onoff.pump5",
+        "onoff.pump6",
+        "onoff.pump7"
       ],
       "capabilitiesOptions": {
         "measure_humidity.AM2320": {
@@ -120,22 +124,51 @@
         "onoff.pump1": {
           "title": {
             "en": "Pump 1"
-          }
+          },
+          "uiQuickAction": false,
+          "insights": false
         },
         "onoff.pump2": {
           "title": {
             "en": "Pump 2"
-          }
+          },
+          "uiQuickAction": false,
+          "insights": false
         },
         "onoff.pump3": {
           "title": {
             "en": "Pump 3"
-          }
+          },
+          "uiQuickAction": false,
+          "insights": false
         },
         "onoff.pump4": {
           "title": {
             "en": "Pump 4"
-          }
+          },
+          "uiQuickAction": false,
+          "insights": false
+        },
+        "onoff.pump5": {
+          "title": {
+            "en": "Pump 5"
+          },
+          "uiQuickAction": false,
+          "insights": false
+        },
+        "onoff.pump6": {
+          "title": {
+            "en": "Pump 6"
+          },
+          "uiQuickAction": false,
+          "insights": false
+        },
+        "onoff.pump7": {
+          "title": {
+            "en": "Pump 7"
+          },
+          "uiQuickAction": false,
+          "insights": false
         }
       },
       "pair": [
@@ -201,6 +234,45 @@
               "units": {
                 "en": "seconds"
               }
+            },
+            {
+              "id": "duration-pump5",
+              "type": "number",
+              "label": {
+                "en": "Duration Pump 5"
+              },
+              "value": 10,
+              "min": 0,
+              "max": 60,
+              "units": {
+                "en": "seconds"
+              }
+            },
+            {
+              "id": "duration-pump6",
+              "type": "number",
+              "label": {
+                "en": "Duration Pump 6"
+              },
+              "value": 10,
+              "min": 0,
+              "max": 60,
+              "units": {
+                "en": "seconds"
+              }
+            },
+            {
+              "id": "duration-pump7",
+              "type": "number",
+              "label": {
+                "en": "Duration Pump 7"
+              },
+              "value": 10,
+              "min": 0,
+              "max": 60,
+              "units": {
+                "en": "seconds"
+              }
             }
           ]
         }
@@ -213,6 +285,7 @@
       "title": {
         "en": "Soil moisture"
       },
+      "units": "%",
       "uiComponent": "sensor",
       "getable": true,
       "setable": false

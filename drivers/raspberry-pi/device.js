@@ -30,7 +30,7 @@ class RaspberryPiDevice extends Homey.Device {
 			});
 		});
 
-		const pumpCapabilities = ["onoff.pump1", "onoff.pump2", "onoff.pump3", "onoff.pump4"]
+		const pumpCapabilities = [1, 2, 3, 4, 5, 6, 7].map(number => `onoff.pump{number}`)
 		this.registerMultipleCapabilityListener(pumpCapabilities, valueObj => {
 			const capability = Object.keys(valueObj)[0];
 			const pin = capability.split('.')[1];
@@ -87,8 +87,8 @@ class RaspberryPiDevice extends Homey.Device {
 						return this.setCapabilityValue('measure_temperature.analog', msg.data);
 					case 'pi/sensors/HCSR04/range':
 						return this.setCapabilityValue('meter_water.HCSR04', msg.data);
-					case 'pi/sensors/MCP23017/watertank_empty':
-						return this.setCapabilityValue('alarm_water.watertank_empty', msg.data === 1);
+					case 'pi/sensors/MCP23017/got_water':
+						return this.setCapabilityValue('alarm_water.watertank_empty', msg.data === 0);
 					case 'pi/sensors/TSL2561/light':
 						return this.setCapabilityValue('measure_luminance.TSL2561', msg.data);
 					case 'pi/sensors/MCP3008/soil_moisture_1':
@@ -107,6 +107,12 @@ class RaspberryPiDevice extends Homey.Device {
 						return this.setCapabilityValue('onoff.pump3', msg.data === 1);
 					case 'pi/sensors/MCP23017/pump4':
 						return this.setCapabilityValue('onoff.pump4', msg.data === 1);
+					case 'pi/sensors/MCP23017/pump5':
+						return this.setCapabilityValue('onoff.pump5', msg.data === 1);
+					case 'pi/sensors/MCP23017/pump6':
+						return this.setCapabilityValue('onoff.pump6', msg.data === 1);
+					case 'pi/sensors/MCP23017/pump7':
+						return this.setCapabilityValue('onoff.pump7', msg.data === 1);
 					case 'pi/events':
 						return this.handleEvent(msg);
 				}
